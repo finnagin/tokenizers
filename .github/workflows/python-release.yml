@@ -102,7 +102,7 @@ jobs:
               # Windows on arm64 only supports Python 3.11+
 
     runs-on: ${{
-        inputs.os == 'windows-11-arm' && matrix.os ||
+        matrix.os == 'windows-11-arm' && matrix.os ||
         format('{0}-latest', matrix.os)
       }}
     steps:
