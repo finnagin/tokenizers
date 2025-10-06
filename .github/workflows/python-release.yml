@@ -13,14 +13,14 @@ env:
   DIST_DIR: ${{ github.sha }}
 
 jobs:
-  lock_exists:
-    runs-on: ubuntu-latest
-    name: Cargo.lock
-    steps:
-      - uses: actions/checkout@v4
-      - name: Cargo.lock lock exists 
-        run: cat Cargo.lock
-        working-directory: ./bindings/python
+  # lock_exists:
+  #   runs-on: ubuntu-latest
+  #   name: Cargo.lock
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Cargo.lock lock exists 
+  #       run: cat Cargo.lock
+  #       working-directory: ./bindings/python
 
   build:
     name: build on ${{ matrix.platform || matrix.os }} (${{ matrix.target }} - ${{ matrix.manylinux || 'auto' }})
@@ -139,7 +139,7 @@ jobs:
           path: ./bindings/python/dist
   build-sdist:
     name: build sdist
-    needs: [lock_exists]
+    # needs: [lock_exists]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
